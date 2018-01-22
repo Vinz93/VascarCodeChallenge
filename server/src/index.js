@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import Promise from 'bluebird';
 
 import app from './config/express';
+import socket from './config/socketIO';
 import config from './config/env';
 
 import 'babel-core/register';
@@ -12,6 +13,7 @@ const { port, path, host } = config.appConfig;
 
 function listen() {
   app.listen(port);
+  socket(app);
   console.log(`💻  API started on port ${port}`);
   console.log(`📔  Swagger on ${host}:${port}${path}docs`);
 }
