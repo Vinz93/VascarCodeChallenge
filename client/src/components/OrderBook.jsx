@@ -6,18 +6,26 @@ import { subscribeToPnl } from '../api';
 class OrderBook extends Component {
   constructor(props) {
     super(props);
-    this.state = { pnl: 99999 };
-    subscribeToPnl((err, pnl) => {
+    this.state = {
+      name: 'Vascar',
+      pnl: 0,
+      volume: 0,
+      position: 0,
+    };
+    subscribeToPnl((err, accounts) => {
       this.setState({
-        pnl,
+        name: accounts[0].name,
+        pnl: accounts[0].pnl,
       });
     });
   }
   render() {
+    const { name, pnl } = this.state;
     return (
       <div className="order-book">
-        <p>Trading Account</p>
-        <p>pnl: {this.state.pnl} real time.</p>
+        <h2 className="text-center">Caribean Exchange</h2>
+        <h3>User: {name}</h3>
+        <p>pnl: {pnl}.</p>
       </div>
     );
   }

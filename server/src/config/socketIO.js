@@ -55,9 +55,9 @@ function socket(app, port = 3335) {
       // socket.leave(room);
     });
     const socketSimulator = socketioClient.connect('http://localhost:3330');
-    socketSimulator.on('pnl', (pnl) => {
-      console.log(`from simulator ${pnl}`);
-      socket.emit('pnl', pnl);
+    socketSimulator.on('update', (accounts) => {
+      console.log(`from simulator ${accounts[0].name} pnl: ${accounts[0].pnl}`);
+      socket.emit('update', accounts);
     });
   });
 }
