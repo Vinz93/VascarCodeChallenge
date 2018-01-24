@@ -59,5 +59,8 @@ module.exports = {
         loader: 'style!css!sass'
       }
     ]
-  }
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
 };

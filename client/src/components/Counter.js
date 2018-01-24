@@ -1,12 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { increment, decrement } from '../actions/CounterActions';
+import { subscribeToTimer } from '../api';
 
 class Counter extends Component {
   constructor(props, context) {
     super(props, context);
+    this.state = { timestamp: 'no timestamp yet' };
+    subscribeToTimer((err, timestamp) => {
+      const date = new Date(timestamp);
+      const seconds = date.getSeconds();
+      this.setState({
+        timestamp: seconds,
+      });
+    });
   }
+   componentWillMount() {
+
+   }
 
   handleIncrement() {
     this.props.increment();
@@ -29,6 +40,7 @@ class Counter extends Component {
           <button onClick={() => {this.handleDecrement();}}>-</button>
           <button onClick={() => {this.handleIncrement();}}>+</button>
         </div>
+        <p> This is the timer value: {this.state.timestamp}</p>
       </div>
     );
   }

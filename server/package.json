@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
+    "simulator": "babel-node src/simulator.js",
     "build": "rm -rf dist && babel src --out-dir dist",
     "start": "NODE_ENV=production PORT=3333cs pm2 start dist/index.js",
     "test": "mocha  src/tests/**/*.js  --timeout 10000 -c --compilers js:babel-core/register || true",
@@ -66,6 +67,7 @@
     "passport-jwt": "^2.0.0",
     "passport-local": "^1.0.0",
     "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4",
     "swagger-jsdoc": "^1.9.4",
     "swagger-tools": "^0.10.1"
   }
