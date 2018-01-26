@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { subscribeToPnl } from '../api';
 
 
-class OrderBook extends Component {
+class UserInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,22 +16,25 @@ class OrderBook extends Component {
       this.setState({
         name: accounts[0].name,
         pnl: accounts[0].pnl,
+        position: accounts[0].position,
+        volume: accounts[0].volume,
       });
     });
   }
   render() {
-    const { name, pnl } = this.state;
+    const { name, position, pnl, volume } = this.state;
     return (
       <div className="order-book">
-        <h2 className="text-center">Caribean Exchange</h2>
         <h3>User: {name}</h3>
+        <p>position: {position}.</p>
         <p>pnl: {pnl}.</p>
+        <p>volume: {volume}.</p>
       </div>
     );
   }
 }
 
-export default OrderBook;
+export default UserInfo;
 
 // {this.state.orders.map(order => <li key={order.price}>
 // price :{order.price}</li>)}

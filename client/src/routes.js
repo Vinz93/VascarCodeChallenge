@@ -3,9 +3,9 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './containers/App';
 import Counter from './components/Counter';
-import OrderBook from './components/OrderBook';
+import UserInfo from './components/UserInfo';
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={OrderBook} />
+    <IndexRoute component={UserInfo} />
   </Route>
 );

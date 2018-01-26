@@ -10,8 +10,6 @@ $accent-red: #dd6464;
 body {
   background-color: $main-bg-color;
   color: $accent-black;
-  display: flex;
-  justify-content: center;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -21,7 +19,7 @@ body {
 
 .main-app-nav {
   font-size: 2em;
-  text-align: center;
+  text-align: left;
 }
 
 .counter-num-label {

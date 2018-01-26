@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="main-app-container">
-        <div className="main-app-nav">Vascar App</div>
+        <div className="main-app-nav">Dash board NEO Exchange</div>
         {this.props.children}
         <Footer />
       </div>

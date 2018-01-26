@@ -9,7 +9,6 @@ function subscribeToTimer(cb) {
 
 function subscribeToPnl(cb) {
   socket.on('update', data => cb(null, data));
-  socket.emit('trade/pair', 'btc/neo');
 }
 
 export { subscribeToTimer, subscribeToPnl };
