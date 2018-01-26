@@ -1,28 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { subscribeToPnl } from '../api';
+import openSocket from 'socket.io-client';
+import { updateAccounts } from '../actions';
 
+const URL = 'http://localhost:3335';
 
 class UserInfo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: 'Vascar',
-      pnl: 0,
-      volume: 0,
-      position: 0,
-    };
-    subscribeToPnl((err, accounts) => {
-      this.setState({
-        name: accounts[0].name,
-        pnl: accounts[0].pnl,
-        position: accounts[0].position,
-        volume: accounts[0].volume,
-      });
+
+  componentWillMount() {
+    const socket = openSocket(URL);
+    socket.on('update', accounts => {
+      this.props.updateAccounts(accounts);
     });
   }
   render() {
-    const { name, position, pnl, volume } = this.state;
+    if (!this.props.account) return (<p>ja race account</p>);
+    const { name, position, pnl, volume } = this.props.account;
     return (
       <div className="order-book">
         <h3>User: {name}</h3>
@@ -34,7 +27,14 @@ class UserInfo extends Component {
   }
 }
 
-export default UserInfo;
+UserInfo.propTypes = {
+  updateAccounts: PropTypes.func.isRequired,
+  account: PropTypes.object.isRequired,
+};
 
+const mapStateToProps = ({ accounts }) => ({
+  account: accounts.byId[accounts.allIds[0]],
+});
+export default connect(mapStateToProps, { updateAccounts })(UserInfo);
 // {this.state.orders.map(order => <li key={order.price}>
 // price :{order.price}</li>)}

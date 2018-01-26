@@ -8,18 +8,21 @@ const io = socketio(server);
 
 const initialState = [
   {
+    id: '897981',
     name: 'Vascar',
     pnl: 50,
     volume: 1000,
     position: 10000,
   },
   {
+    id: '897982',
     name: 'Trevon James',
     pnl: 30,
     volume: 300,
     position: 9000,
   },
   {
+    id: '897983',
     name: 'Haejin',
     pnl: 90,
     volume: 3000,
@@ -28,19 +31,20 @@ const initialState = [
 ];
 
 function fluctuation(accounts) {
-  return accounts.map(({ pnl, volume, position, name }) => {
+  return accounts.map(account => {
+    const { pnl, volume, position } = account;
     const date = new Date();
     const q = date.getSeconds();
     if (q % 2 === 0) {
       return {
-        name,
+        ...account,
         pnl: pnl + q,
         volume: volume + q,
         position: position + q,
       };
     }
     return {
-      name,
+      ...account,
       pnl: pnl - q,
       volume: volume + q,
       position: position - q,
