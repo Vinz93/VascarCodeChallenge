@@ -36,5 +36,3 @@ const mapStateToProps = ({ accounts }) => ({
   account: accounts.byId[accounts.allIds[0]],
 });
 export default connect(mapStateToProps, { updateAccounts })(UserInfo);
-// {this.state.orders.map(order => <li key={order.price}>
-// price :{order.price}</li>)}
