@@ -13,8 +13,10 @@ cd VascarCodeChallenge/server
 
 yarn install
 ```
-### Start server
+### 1 Start API
 `yarn dev`    Starts the server
+### 2 Start Simulator
+`yarn simulator`    Starts to produce updates on 5 Trading Accounts
 
 ### Client
 
