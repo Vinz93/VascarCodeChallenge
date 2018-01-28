@@ -9,10 +9,10 @@ class UserInfo extends Component {
     return (
       <Row className="user-info">
         <Col xs={6}>
-          <p>{position} NEO</p>
+          <p>{position}<span className="neo-green position-neo">NEO</span></p>
         </Col>
         <Col xs={6}>
-          <p>@{name}</p>
+          <p><span className="neo-green">@</span>{name}</p>
         </Col>
       </Row>
     );

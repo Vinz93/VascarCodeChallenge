@@ -9,10 +9,14 @@ class TradingInfo extends Component {
     return (
       <Row className="trading-info">
         <Col xs={6}>
-          <p>Profit & Loss {pnl}</p>
+          <div className="trading-indicator">
+            Pnl: <span className="neo-green">{pnl}</span>
+        </div>
         </Col>
         <Col xs={6}>
-          <p> Volume {volume}</p>
+          <div className="trading-indicator">
+            Volume: <span className="neo-green">{volume}</span>
+          </div>
         </Col>
       </Row>
     );
