@@ -1,11 +1,13 @@
 import React from 'react';
-import UserInfo from './UserInfo';
+import Header from './Header';
 import DeltaChart from '../containers/DeltaChart';
+import { Grid } from 'react-flexbox-grid';
+
 const Account = () => (
-    <div>
-      <UserInfo />
+    <Grid fluid>
+      <Header />
       <DeltaChart />
-    </div>
+    </Grid>
 );
 
 export default Account;

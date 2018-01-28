@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Row, Col } from 'react-flexbox-grid';
+
 import openSocket from 'socket.io-client';
 import { updateAccounts } from '../actions';
 
@@ -15,14 +17,16 @@ class UserInfo extends Component {
   }
   render() {
     if (!this.props.account) return (<p>ja race account</p>);
-    const { name, position, pnl, volume } = this.props.account;
+    const { name, position } = this.props.account;
     return (
-      <div className="order-book">
-        <h3>User: {name}</h3>
-        <p>position: {position}.</p>
-        <p>pnl: {pnl}.</p>
-        <p>volume: {volume}.</p>
-      </div>
+      <Row className="user-info">
+        <Col xs={6}>
+          <p>{position} NEO</p>
+        </Col>
+        <Col xs={6}>
+          <p>@{name}</p>
+        </Col>
+      </Row>
     );
   }
 }
