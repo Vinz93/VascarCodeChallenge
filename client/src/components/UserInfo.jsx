@@ -16,7 +16,7 @@ class UserInfo extends Component {
     });
   }
   render() {
-    if (!this.props.account) return (<p>ja race account</p>);
+    if (!this.props.account) return (<p>Loading..</p>);
     const { name, position } = this.props.account;
     return (
       <Row className="user-info">
