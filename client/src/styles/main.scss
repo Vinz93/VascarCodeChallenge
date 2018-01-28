@@ -6,6 +6,14 @@ $accent-gray: #e1e0dd;
 $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
+$neo-green: #58bf00;
+
+*
+{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
 
 body {
   background-color: $main-bg-color;
@@ -14,6 +22,15 @@ body {
   margin: 0;
   padding: 0;
 }
+label {
+  display: inline-block;
+}
+
+.input-label {
+	text-align: right;
+	margin-right: 15px;
+}
+
 
 .container-fluid {
   padding: 0 !important;
@@ -88,6 +105,9 @@ footer {
 .delta-avg {
   text-align: center;
 }
+.delta-avg label {
+  width: 90px;
+}
 .avg-indicator {
   display: inline-block;
   font-size: 40px;
@@ -109,4 +129,124 @@ footer {
 
 .trading-info p {
   display: inline-block;
+}
+
+.delta-avg input[type=number] {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+
+  position: relative;
+
+  display: inline-block;
+
+  width: 100%;
+  height: 52px;
+  padding: 5px 25px;
+
+  transition: all .3s;
+
+  color: #373545;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+
+.bar
+{
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+}
+
+
+.bar:before,
+.bar:after
+{
+    position: absolute;
+    bottom: 1px;
+
+    width: 0;
+    height: 2px;
+
+    content: '';
+    transition: .2s ease all;
+
+    background: $neo-green;
+}
+.bar:before
+{
+    left: 50%;
+}
+.bar:after
+{
+    right: 50%;
+}
+/* active state */
+.input-group input:focus ~ .bar:before,
+.input-group input:focus ~ .bar:after
+{
+    width: 50%;
+}
+
+/* =====   static line below the input ========================= */
+.highlight
+{
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+}
+
+.highlight:before
+{
+    position: absolute;
+    top: -1px;
+    right: 0;
+
+    width: 100%;
+    height: 2px;
+
+    content: '';
+
+    background-color: #979898;
+}
+
+/* active state */
+.input-group input:focus ~ .highlight:before
+{
+    opacity: 0;
+}
+.send
+{
+    font-size: 14px;
+
+    display: inline-block;
+
+    width: 100px;
+    margin-top: 40px;
+    margin-left: 20px;
+    padding: 14px;
+
+    transition: color .3s,background-color .3s,border-color .3s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: white;
+    border: none;
+    border-radius: 3px;
+    background-color: $neo-green;
+
+    outline: none;
+}
+
+.send:hover
+{
+    color: #fff;
+    background-color: darken($neo-green, 5%);
 }

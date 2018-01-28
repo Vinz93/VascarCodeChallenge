@@ -27,11 +27,13 @@ class DeltaAvg extends Component {
       <div className="delta-avg">
         <p className="avg-indicator">{avg.toFixed(2)}</p>
           <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+            <label className="input-group">
+              <span className="input-label">Minutes</span>
+              <input type="number" value={this.state.value} onChange={this.handleChange} />
+              <span className="highlight"></span>
+              <span className="bar"></span>
             </label>
-            <input type="submit" value="Submit" />
+            <input className="send" type="submit" value="Submit" />
           </form>
       </div>
     );
