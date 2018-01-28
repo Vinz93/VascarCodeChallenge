@@ -1,5 +1,4 @@
-import React, { Component, PropTypes } from 'react';;
-import Footer from '../components/Footer';
+import React, { Component, PropTypes } from 'react';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -9,13 +8,15 @@ import Footer from '../components/Footer';
 class App extends Component {
   render() {
     return (
-      <div className="main-app-container">
-        <div className="main-app-nav">Dash board NEO Exchange</div>
+      <div>
         {this.props.children}
-        <Footer />
       </div>
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.element,
+};
 
 export default App;

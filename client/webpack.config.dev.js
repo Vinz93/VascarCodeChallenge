@@ -34,7 +34,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       filename: 'index.html',
-      title: 'Simple Redux Boilerplate',
+      title: 'Exchange',
       inject: 'body'
     }),
     /**
@@ -57,7 +57,16 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
-      }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!sass',
+        include: /flexboxgrid/
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'file-loader'
+      },
     ]
   },
   resolve: {
