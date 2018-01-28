@@ -83,10 +83,14 @@ footer {
   }
 }
 .deltachart-container {
-  width: 30%;
-  border: 2px solid;
-  padding: 10px;
-  border-radius: 8px;
+
+}
+.delta-avg {
+  text-align: center;
+}
+.avg-indicator {
+  display: inline-block;
+  font-size: 40px;
 }
 
 
