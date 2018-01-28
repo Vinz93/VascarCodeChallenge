@@ -2,19 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid';
 
-import openSocket from 'socket.io-client';
-import { updateAccounts } from '../actions';
-
-const URL = 'http://localhost:3335';
-
 class UserInfo extends Component {
-
-  componentWillMount() {
-    const socket = openSocket(URL);
-    socket.on('update', accounts => {
-      this.props.updateAccounts(accounts);
-    });
-  }
   render() {
     if (!this.props.account) return (<p>Loading..</p>);
     const { name, position } = this.props.account;
@@ -32,11 +20,10 @@ class UserInfo extends Component {
 }
 
 UserInfo.propTypes = {
-  updateAccounts: PropTypes.func.isRequired,
   account: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ accounts }) => ({
   account: accounts.byId[accounts.allIds[0]],
 });
-export default connect(mapStateToProps, { updateAccounts })(UserInfo);
+export default connect(mapStateToProps)(UserInfo);

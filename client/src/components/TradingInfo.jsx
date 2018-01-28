@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid';
 
 class TradingInfo extends Component {
-
   render() {
     if (!this.props.account) return (<p>Loading..</p>);
     const { pnl, volume } = this.props.account;
