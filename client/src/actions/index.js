@@ -1,4 +1,3 @@
-import { browserHistory } from 'react-router';
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import * as accountsAPI from '../api/accounts';

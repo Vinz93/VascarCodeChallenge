@@ -18,6 +18,10 @@ const Schema = mongoose.Schema;
  */
 
 const AccountStateSchema = new Schema({
+  id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,

@@ -36,9 +36,9 @@ const AccountStateController = {
     const sort = { createdAt: -1 };
     const limit = Math.ceil((delta * 60) / INTERVAL);
     const pnl = await AccountState.find({ name })
-                                    .select({ pnl: 1, createdAt: 1 })
                                     .limit(limit)
                                     .sort(sort);
+    const id = pnl.length > 0 ? pnl[0].id : null;
     const { pnlData, total } = pnl.reduce((acum, act) => {
       const date = new Date(act.createdAt);
       const time = `${date.getHours()}:${date.getMinutes()} ${date.getSeconds()}`;
@@ -52,6 +52,8 @@ const AccountStateController = {
     });
 
     res.json({
+      id,
+      name,
       pnlData,
       total,
       avg: total / pnlData.length,
