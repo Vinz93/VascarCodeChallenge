@@ -1,20 +1,23 @@
 // import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants/ActionTypes';
-
-export default function deltapnl(state = { data: [], avg: 0, name:'', id: 0 }, action) {
+const initialState = { data: [], avg: 0, name:'', id: 0, total: 0 };
+export default function deltapnl(state = initialState, action) {
   switch (action.type) {
     case 'RECEIVE_DELTAPNL':
-    const { pnlData, avg, id, name } = action.deltaData;
-      return { data: pnlData, avg, id, name };
+    const { pnlData, avg, id, name, total } = action.deltaData;
+      return { data: pnlData, avg, id, name, total };
     case 'UPDATE_ACCOUNTS':
-      console.log('deltaPnl reducer')
       const { accounts } = action.response.entities;
-      console.log(accounts);
       const pnl = accounts[state.id].pnl;
       const date = new Date();
-      const time = `${date.getHours()}:${date.getMinutes()} ${date.getSeconds()}`
+      const time = `${date.getHours()}:${date.getMinutes()} ${date.getSeconds()}`;
+      const newTotal = state.total - state.data[0].pnl + pnl;
+      console.log(`${state.data[0].pnl} - ${pnl}`)
+      console.log(`${state.data[0].pnl - pnl}`)
+      const newAvg = newTotal / state.data.length;
       return {
           ...state,
           data:[...state.data.slice(1), { pnl, time }],
+          avg: newAvg
          }
     default:
       return state;
