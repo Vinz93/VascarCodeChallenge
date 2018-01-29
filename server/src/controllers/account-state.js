@@ -33,16 +33,20 @@ const AccountStateController = {
 
   async deltaPnL(req, res) {
     const { name, delta } = req.query;
-    const sort = { createdAt: 1 };
+    const sort = { createdAt: -1 };
     const limit = Math.ceil((delta * 60) / INTERVAL);
     const pnl = await AccountState.find({ name })
-                                    .select({ pnl: 1 })
+                                    .select({ pnl: 1, createdAt: 1 })
                                     .limit(limit)
                                     .sort(sort);
-    const { pnlData, total } = pnl.reduce((acum, act) => ({
-      pnlData: [...acum.pnlData, act.pnl],
-      total: acum.total + act.pnl,
-    }), {
+    const { pnlData, total } = pnl.reduce((acum, act) => {
+      const date = new Date(act.createdAt);
+      const time = `${date.getHours()}:${date.getMinutes()} ${date.getSeconds()}`;
+      return {
+        pnlData: [...acum.pnlData, { pnl: act.pnl, time }],
+        total: acum.total + act.pnl,
+      };
+    }, {
       pnlData: [],
       total: 0,
     });

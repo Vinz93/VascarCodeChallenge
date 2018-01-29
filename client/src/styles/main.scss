@@ -7,10 +7,11 @@ $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 $neo-green: #58bf00;
-$trading-info-font-size: 32px;
-$font-size: 27px;
-$chart-title-font-size:45px;
-$avg-indicator-font-size:40px;
+$trading-info-font-size: 24px;
+$font-size: 22px;
+$chart-title-font-size: 30px;
+$avg-indicator-font-size: 26px;
+$margin-delta-avg: 300px;
 *
 {
     -webkit-box-sizing: border-box;
@@ -118,6 +119,11 @@ footer {
 .delta-avg {
   text-align: center;
 }
+
+.delta-avg form {
+  display: inline-block;
+  margin-left: $margin-delta-avg;
+}
 .delta-avg label {
   width: 90px;
 }
@@ -150,8 +156,8 @@ footer {
   color: $neo-green;
 }
 
-.delta-chart-container {
-  margin-top: 70px;
+.chart-container {
+  margin-top: 80px;
 }
 
 .delta-avg input[type=number] {
@@ -274,34 +280,23 @@ footer {
     background-color: darken($neo-green, 5%);
 }
 
-.sparklines-container {
-  padding-left: 45px !important;
-}
-
 .chart-title {
   font-size: $chart-title-font-size;
   font-weight: 700;
-  margin-bottom: 70px;
 }
 
 
 @media (max-width: 1200px) {
-  .chart-title {
-    font-size: $chart-title-font-size - 10px;
-    font-weight: 500;
-    margin-bottom: 55px;
-  }
-
   .user-info p {
-    font-size: $font-size - 5px;
+    font-size: $font-size - 2px;
   }
 
   .trading-info .trading-indicator {
-    font-size: $trading-info-font-size - 5px;
+    font-size: $trading-info-font-size - 2px;
   }
 
   .avg-indicator {
-    font-size: $avg-indicator-font-size - 10px;
+    font-size: $avg-indicator-font-size - 2px;
   }
 
   .send {
@@ -316,7 +311,7 @@ footer {
     }
 
     .delta-chart-container {
-      margin-top: 55px;
+      margin-top: 0px;
     }
 }
 

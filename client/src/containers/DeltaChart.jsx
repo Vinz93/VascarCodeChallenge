@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
-import { Row, Col } from 'react-flexbox-grid';
+import { XAxis, YAxis, BarChart, Bar, CartesianGrid, Tooltip } from 'recharts';
+import { Row } from 'react-flexbox-grid';
 
 import { fetchDelta } from '../actions';
 import DeltaAvg from './../components/DeltaAvg';
@@ -18,22 +18,23 @@ class DeltaChart extends Component {
   }
   render() {
     if (!this.props.data) return (<p>loading ..</p>);
-    const { data, avg, fetchDelta: FDfunc } = this.props;
+    const { data: pnl, avg, fetchDelta: FDfunc } = this.props;
+    const data = pnl.map(e => ({ name: e.time, PnL: e.pnl }));
     return (
-      <div className="delta-chart-container">
+      <div>
         <Row center="xs">
-          <h1 className="chart-title">Delta Pnl Average</h1>
+          <DeltaAvg avg={avg} fetchDelta={FDfunc} />
         </Row>
-        <Row center="xs">
-          <Col className="sparklines-container" xs={10} sm={10} lg={7}>
-            <Sparklines data={data} limit={avg + 20}>
-              <SparklinesLine color="#1c8cdc" />
-              <SparklinesSpots />
-            </Sparklines>
-          </Col>
-          <Col xs={8} sm={8} lg={5}>
-            <DeltaAvg avg={avg} fetchDelta={FDfunc} />
-          </Col>
+        <Row className="chart-container" center="xs">
+          <BarChart width={1000} height={400} data={data}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+             <XAxis dataKey="name"/>
+             <YAxis dataKey ="PnL"/>
+             <CartesianGrid strokeDasharray="3 3"/>
+             <Tooltip/>
+             <Bar dataKey="PnL" fill="#f8a125" />
+            </BarChart>
         </Row>
       </div>
     );

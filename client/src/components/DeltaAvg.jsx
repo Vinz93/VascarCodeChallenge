@@ -25,12 +25,11 @@ class DeltaAvg extends Component {
     if (!avg) return (<p>Loading..</p>);
     return (
       <div className="delta-avg">
-        <p className="avg-indicator">{avg.toFixed(2)}</p>
+        <p className="avg-indicator"> {`🔺pnl: ${avg.toFixed(2)}`}</p>
           <form onSubmit={this.handleSubmit}>
             <label className="input-group">
               <span className="input-label">Minutes</span>
               <input type="number" value={this.state.value} onChange={this.handleChange} />
-              <span className="highlight"></span>
               <span className="bar"></span>
             </label>
             <input className="send" type="submit" value="Submit" />
