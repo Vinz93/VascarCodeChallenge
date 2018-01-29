@@ -7,8 +7,10 @@ $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 $neo-green: #58bf00;
-$trading-info-font-size: 36px;
-$header-font-size: 25px;
+$trading-info-font-size: 32px;
+$font-size: 27px;
+$chart-title-font-size:45px;
+$avg-indicator-font-size:40px;
 *
 {
     -webkit-box-sizing: border-box;
@@ -26,23 +28,21 @@ body {
 label {
   display: inline-block;
 }
-
+.container-fluid {
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
 .neo-green {
   color: $neo-green;
 }
 
 .position-neo {
   margin-left: 8px;
-  font-weight: 800;
+  font-weight: 500;
 }
 .input-label {
 	text-align: right;
 	margin-right: 15px;
-}
-
-
-.container-fluid {
-  padding: 0 !important;
 }
 
 .main-app-container {
@@ -113,7 +113,7 @@ footer {
 }
 
 .user-info p {
-  font-size: $header-font-size;
+  font-size: $font-size;
 }
 .delta-avg {
   text-align: center;
@@ -123,7 +123,7 @@ footer {
 }
 .avg-indicator {
   display: inline-block;
-  font-size: 40px;
+  font-size: $avg-indicator-font-size;
 }
 
 
@@ -138,7 +138,8 @@ footer {
 
 .trading-info {
   text-align: center;
-  margin: 40px 0px;
+  border-bottom: 4px solid;
+  padding: 30px 20px;
 }
 
 .trading-info .trading-indicator {
@@ -147,6 +148,10 @@ footer {
 }
 .trading-info .trading-indicator .indicador {
   color: $neo-green;
+}
+
+.delta-chart-container {
+  margin-top: 70px;
 }
 
 .delta-avg input[type=number] {
@@ -211,7 +216,7 @@ footer {
     width: 50%;
 }
 
-/* =====   static line below the input ========================= */
+/*   static line below the input  */
 .highlight
 {
     position: relative;
@@ -271,4 +276,54 @@ footer {
 
 .sparklines-container {
   padding-left: 45px !important;
+}
+
+.chart-title {
+  font-size: $chart-title-font-size;
+  font-weight: 700;
+  margin-bottom: 70px;
+}
+
+
+@media (max-width: 1200px) {
+  .chart-title {
+    font-size: $chart-title-font-size - 10px;
+    font-weight: 500;
+    margin-bottom: 55px;
+  }
+
+  .user-info p {
+    font-size: $font-size - 5px;
+  }
+
+  .trading-info .trading-indicator {
+    font-size: $trading-info-font-size - 5px;
+  }
+
+  .avg-indicator {
+    font-size: $avg-indicator-font-size - 10px;
+  }
+
+  .send {
+    font-size: 14px;
+    width: 85px;
+    padding: 10px;
+    }
+
+    .delta-avg input[type=number] {
+      height: 42px;
+      padding: 5px 10px;
+    }
+
+    .delta-chart-container {
+      margin-top: 55px;
+    }
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+
 }

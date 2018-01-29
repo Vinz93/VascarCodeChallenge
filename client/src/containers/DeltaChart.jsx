@@ -20,18 +20,18 @@ class DeltaChart extends Component {
     if (!this.props.data) return (<p>loading ..</p>);
     const { data, avg, fetchDelta: FDfunc } = this.props;
     return (
-      <div>
+      <div className="delta-chart-container">
         <Row center="xs">
-          <h1>Delta Pnl Average</h1>
+          <h1 className="chart-title">Delta Pnl Average</h1>
         </Row>
-        <Row>
-          <Col className="sparklines-container" xs={7}>
+        <Row center="xs">
+          <Col className="sparklines-container" xs={10} sm={10} lg={7}>
             <Sparklines data={data} limit={avg + 20}>
               <SparklinesLine color="#1c8cdc" />
               <SparklinesSpots />
             </Sparklines>
           </Col>
-          <Col xs={5}>
+          <Col xs={8} sm={8} lg={5}>
             <DeltaAvg avg={avg} fetchDelta={FDfunc} />
           </Col>
         </Row>
