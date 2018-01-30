@@ -16,11 +16,11 @@ const AccountStateController = {
    *     produces:
    *       - application/json
    *     parameters:
-   *       - name: name
-   *         description: account name.
+   *       - name: code
+   *         description: account code.
    *         in: query
    *         required: true
-   *         type: string
+   *         type: number
    *       - name: delta
    *         description: delta in minutes.
    *         in: query
@@ -32,13 +32,15 @@ const AccountStateController = {
    */
 
   async deltaPnL(req, res) {
-    const { name, delta } = req.query;
+    const { code, delta } = req.query;
     const sort = { createdAt: -1 };
     const limit = Math.ceil((delta * 60) / INTERVAL);
-    const pnl = await AccountState.find({ name })
+    const pnl = await AccountState.find({ id: code })
                                     .limit(limit)
                                     .sort(sort);
     const id = pnl.length > 0 ? pnl[0].id : null;
+    const name = pnl.length > 0 ? pnl[0].name : null;
+    console.log(`server code ${id}`);
     const { pnlData, total } = pnl.reduce((acum, act) => {
       const date = new Date(act.createdAt);
       const time = `${date.getHours()}:${date.getMinutes()} ${date.getSeconds()}`;

@@ -1,6 +1,6 @@
 const URL = 'http://localhost:3333/delta-pnl';
-export const fetchDelta = (name, delta) => {
-  const queryParams = `?name=${name}&delta=${delta}`;
+export const fetchDelta = (code, delta) => {
+  const queryParams = `?code=${code}&delta=${delta}`;
   return fetch(`${URL}${queryParams}`).then(res => res.json());
 };
 

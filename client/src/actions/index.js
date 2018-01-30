@@ -7,8 +7,14 @@ export const updateAccounts = accounts => ({
   response: normalize(accounts, schema.arrayOfAccounts),
 });
 
-export const fetchDelta = (name, delta) => (dispatch, getState) => {
-  return accountsAPI.fetchDelta(name, delta).then(response => {
+export const updateAccount = (accounts, code) => ({
+  type: 'UPDATE_CURRENT_ACCOUNT',
+  response: normalize(accounts, schema.arrayOfAccounts),
+  code,
+});
+
+export const fetchDelta = (code, delta) => (dispatch, getState) => {
+  return accountsAPI.fetchDelta(code, delta).then(response => {
     dispatch({
       type: 'RECEIVE_DELTAPNL',
       deltaData: response,

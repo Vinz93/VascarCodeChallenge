@@ -5,14 +5,12 @@ export default function deltapnl(state = initialState, action) {
     case 'RECEIVE_DELTAPNL':
     const { pnlData, avg, id, name, total } = action.deltaData;
       return { data: pnlData, avg, id, name, total };
-    case 'UPDATE_ACCOUNTS':
+    case 'UPDATE_ACCOUNT':
       const { accounts } = action.response.entities;
-      const pnl = accounts[state.id].pnl;
+      const pnl = accounts[action.id].pnl;
       const date = new Date();
       const time = `${date.getHours()}:${date.getMinutes()} ${date.getSeconds()}`;
       const newTotal = state.total - state.data[0].pnl + pnl;
-      console.log(`${state.data[0].pnl} - ${pnl}`)
-      console.log(`${state.data[0].pnl - pnl}`)
       const newAvg = newTotal / state.data.length;
       return {
           ...state,

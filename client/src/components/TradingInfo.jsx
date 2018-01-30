@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid';
+import { withRouter } from 'react-router-dom';
 
 class TradingInfo extends Component {
   render() {
-    if (!this.props.account) return (<p>Loading..</p>);
-    const { pnl, volume } = this.props.account;
+    if (!this.props.accounts) return (<p>Loading..</p>);
+    const { code } = this.props.match.params;
+    const { pnl, volume } = this.props.accounts[code];
     return (
       <Row className="trading-info">
         <Col xs={6}>
@@ -24,10 +26,11 @@ class TradingInfo extends Component {
 }
 
 TradingInfo.propTypes = {
-  account: PropTypes.object.isRequired,
+  accounts: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ accounts }) => ({
-  account: accounts.byId[accounts.allIds[0]],
+  accounts: accounts.byId,
 });
-export default connect(mapStateToProps)(TradingInfo);
+export default withRouter(connect(mapStateToProps)(TradingInfo));

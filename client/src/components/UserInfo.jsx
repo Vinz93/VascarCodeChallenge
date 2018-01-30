@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid';
+import { withRouter } from 'react-router-dom';
+
 
 class UserInfo extends Component {
   render() {
-    if (!this.props.account) return (<p>Loading..</p>);
-    const { name, position } = this.props.account;
+    if (!this.props.accounts) return (<p>Loading..</p>);
+    const { code } = this.props.match.params;
+    const { name, position } = this.props.accounts[code];
     return (
       <Row className="user-info">
         <Col xs={6}>
@@ -20,10 +23,12 @@ class UserInfo extends Component {
 }
 
 UserInfo.propTypes = {
-  account: PropTypes.object.isRequired,
+  accounts: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ accounts }) => ({
-  account: accounts.byId[accounts.allIds[0]],
+  accounts: accounts.byId,
 });
-export default connect(mapStateToProps)(UserInfo);
+
+export default withRouter(connect(mapStateToProps)(UserInfo));

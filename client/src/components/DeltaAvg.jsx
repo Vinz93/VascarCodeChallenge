@@ -15,7 +15,7 @@ class DeltaAvg extends Component {
      alert(`invalid input ${value} (no negatives or higher than 20)`);
      this.setState({ value: 5 });
    } else {
-     this.props.fetchDelta('Vascar', value);
+     this.props.fetchDelta(this.props.code, value);
    }
    event.preventDefault();
  }
@@ -42,5 +42,6 @@ class DeltaAvg extends Component {
 DeltaAvg.propTypes = {
   avg: PropTypes.number.isRequired,
   fetchDelta: PropTypes.func.isRequired,
+  code: PropTypes.number.isRequired,
 };
 export default DeltaAvg;

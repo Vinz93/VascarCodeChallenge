@@ -1,10 +1,15 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 import App from './containers/App';
 import Account from './components/Account';
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Account} />
+    <Route component={Account} />
+    <Route path="/account/detail" render={() => (<p>account detail</p>)}/>
   </Route>
 );
