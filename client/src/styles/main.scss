@@ -7,6 +7,8 @@ $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 $neo-green: #58bf00;
+
+$accounts-font-size: 35px;
 $trading-info-font-size: 24px;
 $font-size: 22px;
 $chart-title-font-size: 30px;
@@ -285,7 +287,31 @@ footer {
   font-weight: 700;
 }
 
+.accounts-list {
+  margin-top: 12%;
+  display: flex;
+  justify-content: center;
+}
 
+.account-item {
+  padding: 10px 20px;
+  margin-left: 70px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.account-item  a, .account-item  p {
+  font-size: $accounts-font-size;
+  text-decoration: none;
+  align-self: center;
+}
+.account-item  a {
+  color: $neo-green;
+}
+.account-item  p {
+  color: $accent-black;
+}
 @media (max-width: 1200px) {
   .user-info p {
     font-size: $font-size - 2px;

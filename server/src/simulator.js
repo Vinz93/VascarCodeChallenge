@@ -28,6 +28,20 @@ const initialState = [
     volume: 3000,
     position: 5000,
   },
+  {
+    id: '897984',
+    name: 'Barbi',
+    pnl: 90,
+    volume: 3000,
+    position: 900000,
+  },
+  {
+    id: '897985',
+    name: 'Byron',
+    pnl: 90,
+    volume: 3000,
+    position: 8000,
+  },
 ];
 
 function fluctuation(accounts) {

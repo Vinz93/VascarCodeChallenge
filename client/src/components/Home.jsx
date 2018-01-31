@@ -9,13 +9,14 @@ const URL = 'http://localhost:3335';
 
 const Menu = ({ accounts }) => {
   return (
-    <ul>
+    <ul className="accounts-list">
       {
         accounts.allIds.map(id => {
-          const { name, id: code } = accounts.byId[id];
+          const { name, id: code, pnl } = accounts.byId[id];
           return (
-            <li key={code}>
+            <li className="account-item"key={code}>
               <Link key={code} to={`/accounts/${code}`}>{name}</Link>
+              <p key={code + 1 }>{pnl}</p>
             </li>
           );
         })
