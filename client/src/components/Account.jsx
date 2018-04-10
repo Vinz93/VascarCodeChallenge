@@ -16,7 +16,6 @@ class Account extends Component {
     const socket = openSocket(URL);
     const { code } = this.props.match.params;
     socket.on('update', accounts => {
-      // this.props.updateAccounts(accounts);
       this.props.updateAccount(accounts, code);
     });
   }
