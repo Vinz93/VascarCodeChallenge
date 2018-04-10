@@ -9,7 +9,9 @@
     "build": "npm run clean && npm run build:webpack --progress --profile --colors",
     "dev": "NODE_ENV=development npm start",
     "start": "node devServer.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,7 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "html-webpack-plugin": "^2.24.1",
+    "mocha": "^5.0.5",
     "node-sass": "^3.4.2",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
@@ -48,7 +51,10 @@
   },
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-jquery": "^2.0.0",
     "file-loader": "^1.1.6",
+    "jquery": "^3.3.1",
     "normalizr": "^3.2.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
